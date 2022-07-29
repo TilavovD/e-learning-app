@@ -21,18 +21,28 @@ duration = (
 
 class Author(models.Model):
     full_name = models.CharField(max_length=128)
+    username = models.CharField(max_length=128, unique=True)
     slug = models.CharField(max_length=128)
     courses_count = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.full_name
 
 
 class Tag(models.Model):
     title = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.title
 
 
 class Category(models.Model):
     title = models.CharField(max_length=128)
     slug = models.CharField(max_length=128)
     image = models.ImageField(max_length=128)
+
+    def __str__(self):
+        return self.title
 
 
 class Course(models.Model):
@@ -49,3 +59,6 @@ class Course(models.Model):
 
     students_count = models.PositiveIntegerField()
     rating = models.FloatField()
+
+    def __str__(self):
+        return self.title
