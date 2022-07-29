@@ -4,6 +4,7 @@ from .models import *
 
 admin.site.register(Author)
 admin.site.register(Tag)
+admin.site.register(CourseUser)
 
 @admin.register(Course)
 class Admin(admin.ModelAdmin):

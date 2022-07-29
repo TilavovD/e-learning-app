@@ -22,6 +22,8 @@ class User(AbstractUser):
     created_at = models.DateTimeField(("date created"), auto_now_add=True, null=True)
     updated_at = models.DateTimeField(("date updated"), auto_now=True)
 
+
+
     # SETTINGS
     USERNAME_FIELD = "email"
     first_name = None

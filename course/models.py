@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+from common.models import User
+
 type = (
     ("free", "Free"),
     ("premium", "Premium")
@@ -24,6 +26,8 @@ class Author(models.Model):
     username = models.CharField(max_length=128, unique=True)
     slug = models.CharField(max_length=128)
     courses_count = models.PositiveIntegerField()
+
+
 
     def __str__(self):
         return self.full_name
@@ -62,3 +66,11 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CourseUser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='course')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='user')
+
+    enrolled_date = models.DateTimeField()
+    course_completion_percentage = models.PositiveIntegerField()
